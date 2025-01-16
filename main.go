@@ -18,14 +18,16 @@ func main() {
 		fmt.Println(i, method)
 	}
 	entryMethod := cmd.GetInput()
+	var newNames []string
 	if entryMethod == 1 {
-		manual.ManualEntry()
+		newNames = manual.ManualEntry()
 	} else if entryMethod == 2 {
-		auto.AutoEntry()
+		newNames = auto.AutoEntry()
 	} else {
 		fmt.Println("Invalid input")
 		os.Exit(1)
 	}
+	fmt.Println(newNames)
 
 	os.Exit(0)
 }

@@ -11,13 +11,13 @@ import (
 	"github.com/wfcornelissen/renamer/internal/walker"
 )
 
-func ManualEntry() {
+func ManualEntry() []string {
 	fmt.Println("Manual Entry")
 	renamedFiles := []string{}
 	files := walker.WalkDir(models.MacPath)
 	if len(files) == 0 {
 		fmt.Println("No files found")
-		return
+		return renamedFiles
 	}
 	for _, file := range files {
 		if strings.HasSuffix(file, "/") || strings.HasPrefix(path.Base(file), ".") {
@@ -32,5 +32,5 @@ func ManualEntry() {
 		fmt.Println(docName) //debug
 		renamedFiles = append(renamedFiles, docName)
 	}
-	fmt.Println(renamedFiles)
+	return renamedFiles
 }
