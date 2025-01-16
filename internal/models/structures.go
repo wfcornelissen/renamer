@@ -1,42 +1,42 @@
 package models
 
-type company struct {
+type Company struct {
 	Name      string
 	FileStart string
 	FileNum   int
 }
 
-var no1Online = company{
+var No1Online = Company{
 	Name:      "Number 1 Online Solutions",
 	FileStart: "/N1O_",
 }
 
-var VirtigoResources = company{
+var VirtigoResources = Company{
 	Name:      "Virtigo Resources",
 	FileStart: "/VirRes_",
 }
-var VirtigoAgri = company{
+var VirtigoAgri = Company{
 	Name:      "Virtigo Agri",
 	FileStart: "/VirAgri_",
 }
 
-var VirtigoSandAndStone = company{
+var VirtigoSandAndStone = Company{
 	Name:      "Virtigo Sand And Stone",
 	FileStart: "/VirSand_",
 }
 
-var LutzvilleCellars = company{
+var LutzvilleCellars = Company{
 	Name:      "Lutzville Cellars",
 	FileStart: "/LCell_",
 }
 
-var NamakwaLogistics = company{
+var NamakwaLogistics = Company{
 	Name:      "Namakwa Logistics",
 	FileStart: "/NamLog_",
 }
 
-var Companies = []company{
-	no1Online,
+var Companies = []Company{
+	No1Online,
 	VirtigoResources,
 	VirtigoAgri,
 	VirtigoSandAndStone,

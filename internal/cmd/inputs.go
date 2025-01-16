@@ -28,11 +28,15 @@ func GetAllInputs() (int, int, int, int) {
 func GetInput() int {
 	scan := bufio.NewScanner(os.Stdin)
 	scan.Scan()
+	if scan.Text() == "" {
+		return 0
+	}
 	input, err := strconv.Atoi(scan.Text())
 	if err != nil {
 		fmt.Println("Invalid input: Unknown command")
 		os.Exit(1)
 	}
+
 	return input
 }
 

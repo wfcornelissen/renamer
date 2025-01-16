@@ -2,7 +2,10 @@ package manual
 
 import (
 	"fmt"
+	"path"
+	"strings"
 
+	"github.com/wfcornelissen/renamer/internal/builder"
 	"github.com/wfcornelissen/renamer/internal/cmd"
 	"github.com/wfcornelissen/renamer/internal/models"
 	"github.com/wfcornelissen/renamer/internal/walker"
@@ -11,19 +14,23 @@ import (
 func ManualEntry() {
 	fmt.Println("Manual Entry")
 	renamedFiles := []string{}
-	files := walker.WalkDir("/mnt/f/codeTesting")
+	files := walker.WalkDir(models.MacPath)
 	if len(files) == 0 {
 		fmt.Println("No files found")
 		return
 	}
 	for _, file := range files {
+		if strings.HasSuffix(file, "/") || strings.HasPrefix(path.Base(file), ".") {
+			continue
+		}
 		fmt.Println(file)
 		if cmd.Skip() {
 			continue
 		}
-		companySelection, startingNumber, lcOrExternalPOD, invoiceNumber := cmd.GetAllInputs()
-		docName := fmt.Sprintf("%sPOD%d_LC%d_INV%d", models.Companies[companySelection].FileStart, startingNumber, lcOrExternalPOD, invoiceNumber)
+		companySelection, PODNumber, lcOrExternalPOD, invoiceNumber := cmd.GetAllInputs()
+		docName := builder.BuildString(models.Companies[companySelection], PODNumber, lcOrExternalPOD, invoiceNumber)
 		fmt.Println(docName) //debug
 		renamedFiles = append(renamedFiles, docName)
 	}
+	fmt.Println(renamedFiles)
 }
