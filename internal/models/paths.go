@@ -1,4 +1,4 @@
 package models
 
-const WindowsPath = "/mnt/f/scans"
+const WindowsPath = "/mnt/f/codeTesting/"
 const MacPath = "/Users/werichcornelissen/workspace/codeTesting/"

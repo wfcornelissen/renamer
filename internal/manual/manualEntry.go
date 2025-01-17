@@ -14,7 +14,7 @@ import (
 func ManualEntry() []string {
 	fmt.Println("Manual Entry")
 	renamedFiles := []string{}
-	files := walker.WalkDir(models.MacPath)
+	files := walker.WalkDir(models.WindowsPath)
 	if len(files) == 0 {
 		fmt.Println("No files found")
 		return renamedFiles
